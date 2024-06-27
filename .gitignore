@@ -129,3 +129,6 @@ dmypy.json
 
 # JetBrains
 .idea/
+
+# session files
+*.session
