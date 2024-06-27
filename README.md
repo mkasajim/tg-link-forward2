@@ -21,8 +21,8 @@ This Python script acts as a Telegram bot that listens for messages containing l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tg-link-forward-saved.git
-   cd tg-link-forward-saved
+   git clone https://github.com/your-username/tg-link-forward2.git
+   cd tg-link-forward2
    ```
 2. Install the required libraries:
    ```bash
