@@ -1,6 +1,8 @@
 from telethon import TelegramClient
 from telethon import events
-from db_operations import extract_domain, is_domain_blacklisted, insert_link, check_and_insert, list_links, is_new_bot, insert_bot
+import re
+from db_operations import extract_domain, is_domain_blacklisted, insert_link, list_links, is_new_bot, insert_bot
+from url_processing import check_and_insert
 
 def setup_telegram_clients(api_id, api_hash, bot_token, phone_number, chat_id, admin_chat_id, conn, blacklist_conn, cursor_webpages):
     user_client = TelegramClient('anon', api_id, api_hash)

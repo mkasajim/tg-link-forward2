@@ -1,7 +1,6 @@
 import requests
 import hashlib
 from bs4 import BeautifulSoup
-from db_operations import normalize_url
 
 def fetch_and_hash(url):
     if not url.startswith('http://') and not url.startswith('https://'):
