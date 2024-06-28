@@ -1,6 +1,8 @@
 import requests
 import hashlib
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse, parse_qs, urlunparse
+import sqlite3
 
 def fetch_and_hash(url):
     if not url.startswith('http://') and not url.startswith('https://'):
@@ -21,8 +23,8 @@ def fetch_and_hash(url):
         return hasher.hexdigest()
     else:
         return None
-    
-def check_and_insert(url, cursor):
+
+def check_and_insert(url, cursor, conn):
     content_hash = fetch_and_hash(url)
     if content_hash:
         try:
@@ -36,3 +38,11 @@ def check_and_insert(url, cursor):
     else:
         print(f"Failed to fetch or hash content for URL: {url}")
         return False
+
+def normalize_url(url):
+    url_parts = list(urlparse(url))
+    query = dict(parse_qs(url_parts[4]))
+    for param in ['Code', 'invite', 'refercode', 'referral_code', 'invite_code']:
+        query.pop(param, None)
+    url_parts[4] = ''
+    return urlunparse(url_parts), query
