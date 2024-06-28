@@ -133,3 +133,6 @@ dmypy.json
 # session files
 *.session
 *.session-journal
+
+cookie.txt
+cookies.txt
